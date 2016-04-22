@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glosowanie", "Glosowanie\Glosowanie.csproj", "{CE04A15E-104E-4EC9-95CF-474E9313530C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glosowanie.DAL", "Glosowanie.DAL\Glosowanie.DAL.csproj", "{17AEB9CE-9090-4E1C-9826-D578DA15977F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B80FA12-78E6-4835-A46E-491F9A829E34} = {4B80FA12-78E6-4835-A46E-491F9A829E34}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glosowanie.Domain", "Glosowanie.Domain\Glosowanie.Domain.csproj", "{FC885A9F-7261-41CD-8C4D-94E0064B8283}"
 EndProject

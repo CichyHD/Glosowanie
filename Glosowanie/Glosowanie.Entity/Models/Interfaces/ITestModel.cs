@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Glosowanie.Domain.Services
+namespace Glosowanie.Entity.Models.Interfaces
 {
-    class TestClass
+    public interface ITestModel
     {
+        int Id { get; set; }
     }
 }
