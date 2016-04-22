@@ -4,7 +4,7 @@
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>c878bb11-86e0-4ab9-b972-b0a32270246d</ProjectGuid>
+		<ProjectGuid>bf9412c9-2105-42e9-a205-2e923e731004</ProjectGuid>
 		<OutputType>Library</OutputType>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
 		<RootNamespace>Glosowanie.Entity</RootNamespace>
