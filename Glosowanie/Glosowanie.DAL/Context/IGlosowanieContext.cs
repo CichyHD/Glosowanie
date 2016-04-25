@@ -14,5 +14,7 @@ namespace Glosowanie.DAL.Context
         DbSet<T> Set<T>() where T : class;
         int SaveChanges();
         DbEntityEntry Entry(object entity);
+
+        DbSet<Pool> Questions { get; set; }
     }
 }

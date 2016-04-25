@@ -48,8 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Basic\BasicModel.cs" />
     <Compile Include="Models\Basic\IBasicModel.cs" />
+    <Compile Include="Models\Pool.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

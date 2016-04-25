@@ -18,7 +18,7 @@ namespace Glosowanie.DAL.Context
             Database.SetInitializer<GlosowanieContext>(new CreateDatabaseIfNotExists<GlosowanieContext>());
         }
 
-        //public DbSet<TestModel> TestModel { get; set; }
+        public DbSet<Pool> Questions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
