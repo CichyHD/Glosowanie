@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Glosowanie.Entity.Models.Interfaces
+namespace Glosowanie.DAL.UnitOfWorkk
 {
-    public interface ITestModel
+    public interface IUnitOfWork
     {
-        int Id { get; set; }
+        int Commit();
+        void Dispose();
     }
 }
