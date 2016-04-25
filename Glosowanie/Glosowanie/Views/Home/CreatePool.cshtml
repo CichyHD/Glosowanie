@@ -1,0 +1,16 @@
+﻿@model Glosowanie.Models.Pool
+
+@{
+    ViewBag.Title = "CreatePool";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="panel">
+        <p>Kreator ankiet</p>
+        <div class="stepImg">@Html.TextBoxFor(model => model.Title, new { placeholder = "Nazwa ankiety", @class = "input" })</div>
+        <div class="input_error">@Html.ValidationMessageFor(model => model.Title)</div>
+    </div>
+}
+
