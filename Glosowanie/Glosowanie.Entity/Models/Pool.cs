@@ -10,7 +10,7 @@ namespace Glosowanie.Entity.Models
     public class Pool : BasicModel
     {
         public string Title { get; set; }
-        public virtual Question Questions { get; set; }
+        public virtual IEnumerable<Question> Questions { get; set; }
         public virtual Token Tokens { get; set; }
     }
 }

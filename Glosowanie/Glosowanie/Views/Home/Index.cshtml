@@ -11,4 +11,14 @@
         <div class="stepImg">@Html.TextBoxFor(model => model.TokenValue, new { placeholder = "Token", @class = "input" })</div>
         <button type="submit" style="clear:both;">Przejdź do ankiety</button>
     </div>
+
+    <div class="panel">
+        <p>lub</p>
+        <p>Wybierz wielkość i utwórz nową ankietę</p>
+        <div class="stepImg">@Html.TextBoxFor(model => model.NumberOfQuestions, new { placeholder = "Liczba pytań", @class = "input", value = "5" }) (domyślnie 5)</div>
+        <div class="stepImg">@Html.TextBoxFor(model => model.NumberOfAnswers, new { placeholder = "Liczba odpowiedzi", @class = "input", value = "2" }) (domyślnie 2)</div>
+        <div class="HrefButton">
+            <a href="@Url.Action("CreatePool", "Home")" class="HrefButton">Dodaj nową ankietę</a>
+        </div>
+    </div>
 }

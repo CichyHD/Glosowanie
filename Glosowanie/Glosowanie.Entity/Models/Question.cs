@@ -10,6 +10,6 @@ namespace Glosowanie.Entity.Models
     public class Question : BasicModel
     {
         public string QuestionText { get; set; }
-        public virtual Answer Answers { get; set; }
+        public virtual IEnumerable<Answer> Answers { get; set; }
     }
 }

@@ -143,7 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Pool.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -180,6 +182,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\CreatePool.cshtml" />
+    <Content Include="Views\Partials\QuestionView.cshtml" />
+    <Content Include="Views\Partials\AnswerView.cshtml" />
+    <Content Include="Views\Partials\AddQuestion.cshtml" />
+    <Content Include="Views\Partials\AddAnswers.cshtml" />
+    <Content Include="Views\Home\EditorTemplate\Questions.cshtml" />
+    <Content Include="Views\Home\EditorTemplate\Answers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

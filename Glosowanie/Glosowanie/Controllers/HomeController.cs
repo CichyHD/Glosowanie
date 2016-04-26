@@ -28,11 +28,25 @@ namespace Glosowanie.Controllers
         [HttpGet]
         public ActionResult CreatePool()
         {
-            return View();
+            Pool model = new Pool();
+
+            model.Questions = new List<Question>();
+            for (int i = 0; i < 10; i++)
+            {
+                Question temp = new Question();
+                temp.Answers = new List<Answer>();
+                for (int j = 0; j < 5; j++)
+                {
+                    temp.Answers.Add(new Answer());
+                }
+                model.Questions.Add(temp);
+            }
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreatePool(Token model)
+        public ActionResult CreatePool(Pool model)
         {
             return View();
         }

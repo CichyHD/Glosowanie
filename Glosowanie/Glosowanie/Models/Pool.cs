@@ -10,5 +10,7 @@ namespace Glosowanie.Models
     {
         [Required(ErrorMessage = "Pole wymagane")]
         public string Title { get; set; }
+
+        public List<Question> Questions { get; set; }
     }
 }
