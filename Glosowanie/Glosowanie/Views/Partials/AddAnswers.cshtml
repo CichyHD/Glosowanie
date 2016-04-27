@@ -1,0 +1,6 @@
+﻿@model List<Glosowanie.Models.Answer>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    <div class="stepImg">@Html.TextBoxFor(model => model[i].AnswerText, new { placeholder = "Podaj odpowiedź", @class = "input", id = String.Format("QestionText{0}", i)})</div>
+}

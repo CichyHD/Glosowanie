@@ -1,0 +1,9 @@
+﻿@model Glosowanie.Models.Question
+
+@Model.QuestionText
+
+
+@foreach(var answer in Model.Answers)
+{
+    Html.RenderPartial("~/Views/Partials/AnswerView.cshtml", answer);  
+}

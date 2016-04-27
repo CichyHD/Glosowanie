@@ -1,0 +1,5 @@
+﻿@model Glosowanie.Models.Question
+
+<div class="stepImg">@Html.TextBoxFor(model => model.QuestionText, new { placeholder = "Podaj pytanie", @class = "input" })</div>
+
+@Html.EditorFor(a => a.Answers)   
