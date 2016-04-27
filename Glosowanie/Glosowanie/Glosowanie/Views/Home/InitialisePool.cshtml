@@ -1,0 +1,19 @@
+﻿@model Glosowanie.Models.PoolOptions
+
+@{
+    ViewBag.Title = "InitialisePool";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="panel">
+        <p>Wybierz wielkość i utwórz nową ankietę</p>
+        <div class="stepImg">@Html.TextBoxFor(model => model.NumberOfQuestions, new { placeholder = "Liczba pytań", @class = "input", value = "5" }) (domyślnie 5)</div>
+        <div class="stepImg">@Html.TextBoxFor(model => model.NumberOfAnswers, new { placeholder = "Liczba odpowiedzi", @class = "input", value = "2" }) (domyślnie 2)</div>
+        <div class="stepImg">@Html.TextBoxFor(model => model.NumberOfAnswers, new { placeholder = "Liczba osób mogących rozwiązań ankietę", @class = "input", value = "2" }) (domyślnie 200)</div>
+        
+        <button type="submit" style="clear:both;">Dodaj ankietę</button>
+    </div>
+}
+
