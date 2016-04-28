@@ -1,4 +1,5 @@
 ﻿using Glosowanie.Domain.Providers;
+using Glosowanie.Domain.Services;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,7 @@ namespace Glosowanie.Domain.DependencySupport
             new Glosowanie.DAL.DependencySupport.RegisterTypes(unityContainer).BuildUnityContainer();
 
             unityContainer.RegisterType<IExcelProvider, ExcelProvider>();
-
-            //unityContainer.RegisterType<IUserRepository, UserRepository>(new PerRequestLifetimeManager());
+            unityContainer.RegisterType<IPoolService, PoolService>();
 
             return unityContainer;
         }

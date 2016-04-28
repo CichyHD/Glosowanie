@@ -1,4 +1,5 @@
 ﻿using Glosowanie.DAL.Context;
+using Glosowanie.DAL.Repositories;
 using Glosowanie.DAL.UnitOfWorkk;
 using Microsoft.Practices.Unity;
 using System;
@@ -21,11 +22,8 @@ namespace Glosowanie.DAL.DependencySupport
 
         public IUnityContainer BuildUnityContainer()
         {
-            //Repository
-            //unityContainer.RegisterType<IAchievementRepository, AchievementRepository>();
-
-            //context
             unityContainer.RegisterType<IGlosowanieContext, GlosowanieContext>();
+            unityContainer.RegisterType<IPoolRepository, PoolRepository>();
 
             //UnitOfWork
             unityContainer.RegisterType<IUnitOfWork, UnitOfWork>();

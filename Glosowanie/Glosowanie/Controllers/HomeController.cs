@@ -1,4 +1,6 @@
-﻿using Glosowanie.Domain.Providers;
+﻿using AutoMapper;
+using Glosowanie.Domain.Providers;
+using Glosowanie.Domain.Services;
 using Glosowanie.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace Glosowanie.Controllers
     public class HomeController : Controller
     {
         IExcelProvider excelProvider;
+        IPoolService _poolService;
 
-        public HomeController(IExcelProvider excelProvider)
+        public HomeController(IExcelProvider excelProvider, IPoolService _poolService)
         {
             this.excelProvider = excelProvider;
+            this._poolService = _poolService;
         }
 
         [HttpGet]
@@ -96,40 +100,70 @@ namespace Glosowanie.Controllers
         [HttpPost]
         public ActionResult CreatePool(Pool model)
         {
-            int numberOfTokens;
-
-            PoolOptions poolOptionsModel = (PoolOptions)Session["PoolOptions"];
-
-            try
+            if (ModelState.IsValid)
             {
-                if (String.IsNullOrEmpty(poolOptionsModel.NumberOfTokens))
+                int numberOfTokens;
+
+                PoolOptions poolOptionsModel = (PoolOptions)Session["PoolOptions"];
+
+                try
                 {
-                    throw new Exception("Object is empty");
+                    if (String.IsNullOrEmpty(poolOptionsModel.NumberOfTokens))
+                    {
+                        throw new Exception("Object is empty");
+                    }
+                    else
+                    {
+                        numberOfTokens = Convert.ToInt32(poolOptionsModel.NumberOfTokens.Replace(" ", ""));
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    numberOfTokens = Convert.ToInt32(poolOptionsModel.NumberOfTokens.Replace(" ",""));
+                    numberOfTokens = 200;
                 }
+
+                for (int i = 0; i < model.Questions.Count(); i++)
+                {
+                    if (String.IsNullOrEmpty(model.Questions[i].QuestionText))
+                    {
+                        model.Questions.RemoveAt(i);
+                        i--;
+                    }
+                    else
+                    {
+                        for (int j = 0; j < model.Questions[i].Answers.Count(); j++)
+                        {
+                            if (String.IsNullOrEmpty(model.Questions[i].Answers[j].AnswerText))
+                            {
+                                model.Questions[i].Answers.RemoveAt(j);
+                                j--;
+                            }
+                        }
+                    }
+                }
+
+                List<string> Tokens = new List<string>();
+                string token;
+
+                model.Tokens = new List<Token>();
+
+                for (int i = 0; i < numberOfTokens; i++)
+                {
+                    token = Guid.NewGuid().ToString().Substring(0, 13);
+                    model.Tokens.Add(new Token() { TokenValue = token, Used = false });
+                    Tokens.Add(token);
+                }
+
+                var excelFile = excelProvider.CreateExcelFile(Tokens);
+
+                Mapper.CreateMap<Pool, Glosowanie.Entity.Models.Pool>();
+                Mapper.CreateMap<Question, Glosowanie.Entity.Models.Question>();
+                Mapper.CreateMap<Token, Glosowanie.Entity.Models.Token>();
+                Mapper.CreateMap<Answer, Glosowanie.Entity.Models.Answer>();
+
+                _poolService.Create(Mapper.Map<Glosowanie.Entity.Models.Pool>(model));
+
             }
-            catch (Exception)
-            {
-                numberOfTokens = 200;
-            }
-
-            List<string> Tokens = new List<string>();
-            string token;
-
-            model.Tokens = new List<Token>();
-
-            for (int i = 0; i < numberOfTokens; i++)
-            {
-                token = Guid.NewGuid().ToString().Substring(0, 13);
-                model.Tokens.Add(new Token() { TokenValue = token, Used = false});
-                Tokens.Add(token);
-            }
-
-            var excelFile = excelProvider.CreateExcelFile(Tokens);
-
             return View(model);
         }
 
