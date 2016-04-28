@@ -38,7 +38,6 @@ namespace Glosowanie.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-
             new TypeRegister(container).BuildUnityContainer();
         }
     }

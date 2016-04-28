@@ -119,6 +119,8 @@ namespace Glosowanie.Controllers
             List<string> Tokens = new List<string>();
             string token;
 
+            model.Tokens = new List<Token>();
+
             for (int i = 0; i < numberOfTokens; i++)
             {
                 token = Guid.NewGuid().ToString().Substring(0, 13);
@@ -128,7 +130,7 @@ namespace Glosowanie.Controllers
 
             var excelFile = excelProvider.CreateExcelFile(Tokens);
 
-            return View();
+            return View(model);
         }
 
         [HttpGet]

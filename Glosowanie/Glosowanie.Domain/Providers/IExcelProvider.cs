@@ -9,6 +9,6 @@ namespace Glosowanie.Domain.Providers
 {
     public interface IExcelProvider
     {
-        ExcelFile CreateExcelFile(IEnumerable<string> tokensList);
+        ExcelFile CreateExcelFile(List<string> tokensList);
     }
 }

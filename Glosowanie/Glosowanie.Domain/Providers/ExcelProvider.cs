@@ -10,7 +10,7 @@ namespace Glosowanie.Domain.Providers
 
     public class ExcelProvider : IExcelProvider
     {
-        public ExcelFile CreateExcelFile(IEnumerable<string> tokensList)
+        public ExcelFile CreateExcelFile(List<string> tokensList)
         {
             SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
 
@@ -18,9 +18,9 @@ namespace Glosowanie.Domain.Providers
             ExcelWorksheet excelWorksheet = excelFile.Worksheets.Add("Writing");
 
             excelWorksheet.Cells[0, 0].Value = "Lista tokenów";
-            foreach (string token in tokensList)
+            for (int i = 0; i < tokensList.Count(); i++)
             {
-                excelWorksheet.Cells[token.GetEnumerator().Current, 0].Value = token;
+                excelWorksheet.Cells[i, 0].Value = tokensList[i];
             }
 
             return excelFile;
